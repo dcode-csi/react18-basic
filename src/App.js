@@ -1,21 +1,30 @@
-import { useState } from 'react';
+import { useState, useTransition } from 'react';
 
 function App() {
 	const [Count, setCount] = useState(0);
 	const [Items, setItems] = useState([]);
+	const [isPending, startTransition] = useTransition();
 
 	const handleClick = () => {
+		//urgent
 		setCount(Count + 1);
-		const arr = Array(20000)
-			.fill(1)
-			.map((el, idx) => Count + 20000 - idx);
 
-		setItems(arr);
+		//transition update (not urgent)
+		startTransition(() => {
+			const arr = Array(10000)
+				.fill(1)
+				.map((el, idx) => Count + 10000 - idx);
+
+			setItems(arr);
+		});
 	};
 
 	return (
 		<div className='App'>
-			<button onClick={handleClick}>{Count}</button>
+			<button onClick={handleClick} disabled={isPending}>
+				{Count}
+			</button>
+			{isPending ? <p>Loading...</p> : null}
 			<ul>
 				{Items.map((item) => (
 					<li key={item}>{item}</li>
