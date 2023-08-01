@@ -21,7 +21,7 @@ export const useFlickrQuery = (opt) => {
 	return useQuery(['flickrData', opt], fetchFlickr, {
 		refetchOnMount: false,
 		refetchOnWindowFocus: false,
-		cacheTime: 1000 * 60,
-		staleTime: 1000 * 60,
+		cacheTime: 0,
+		staleTime: 0,
 	});
 };

@@ -1,4 +1,4 @@
-import { useFlickrQuery } from './hooks/useFlickerQuery';
+import { useFlickrQuery } from './hooks/useFlickrQuery';
 
 function Flickr() {
 	const { data, isSuccess } = useFlickrQuery({ type: 'interest' });
