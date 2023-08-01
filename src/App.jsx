@@ -1,21 +1,13 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { Suspense } from 'react';
-import Youtube from './Youtube';
-import Flickr from './Flickr';
+import React, { Suspense } from 'react';
+import PostsComponent from './PostsComponent';
 
 function App() {
-	const queryClient = new QueryClient();
 	return (
-		<QueryClientProvider client={queryClient}>
-			<div className='App'>
-				<h1>App</h1>
-				<Suspense fallback={<p>Loading...</p>}>
-					<h2>static data</h2>
-					<Youtube />
-					<Flickr />
-				</Suspense>
-			</div>
-		</QueryClientProvider>
+		<div className='App'>
+			<Suspense fallback={<div>Loading Posts...</div>}>
+				<PostsComponent />
+			</Suspense>
+		</div>
 	);
 }
 
