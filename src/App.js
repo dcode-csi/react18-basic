@@ -9,10 +9,14 @@ function App() {
 		<QueryClientProvider client={queryClient}>
 			<div className='App'>
 				<h1>App</h1>
-				<Suspense fallback={<p>Loading...</p>}>
-					<h2>static data</h2>
+				<Suspense fallback={<p>Youtube Loading...</p>}>
+					<h2>Youtube</h2>
 					<Youtube />
-					<Flickr />
+
+					<Suspense fallback={<p>Flick Loading...</p>}>
+						<h2>Flickr</h2>
+						<Flickr />
+					</Suspense>
 				</Suspense>
 			</div>
 		</QueryClientProvider>
