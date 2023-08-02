@@ -23,5 +23,6 @@ export const useFlickrQuery = (opt) => {
 		refetchOnWindowFocus: false,
 		cacheTime: 0,
 		staleTime: 0,
+		suspense: true,
 	});
 };

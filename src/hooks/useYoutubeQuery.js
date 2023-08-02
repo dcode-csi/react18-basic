@@ -16,5 +16,6 @@ export const useYoutubeQuery = () => {
 		refetchOnWindowFocus: false,
 		cacheTime: 0,
 		staleTime: 0,
+		suspense: true,
 	});
 };
