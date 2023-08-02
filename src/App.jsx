@@ -1,12 +1,19 @@
 import React, { Suspense } from 'react';
 import PostsComponent from './PostsComponent';
+import CommentsComponent from './CommentsComponent copy';
 
 function App() {
 	return (
 		<div className='App'>
 			{/* 내부에 직접 promise객체의 상태를 반환하는 컴포넌트를 Suspense로 감싸면 해당 컴포넌트만 독립적으로 동기화처리 */}
 			<Suspense fallback={<div>Loading Posts...</div>}>
+				<h1>Post</h1>
 				<PostsComponent />
+
+				<Suspense fallback={<div>Loaind Comments ...</div>}>
+					<h1>Comments</h1>
+					<CommentsComponent />
+				</Suspense>
 			</Suspense>
 		</div>
 	);

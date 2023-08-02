@@ -40,7 +40,7 @@ function useGetData(url) {
 		const getData = async () => {
 			//데이터 요청후 현재 데이터 상태를 확인하는 promise객체 자체를 비동기적으로 받음
 			const promise = axios.get(url).then((response) => response.data);
-			//해당 promise객체를 promiseWrapper를 이용하여 직접 동기화하는 커스텀 함수 호출후 결과값을 리턴
+			//해당 promise객체를 promiseWrapper를 이용하여 직접 동기화하는 커스텀 함수 호출후 결과값을
 			setResource(promiseWrapper(promise));
 		};
 

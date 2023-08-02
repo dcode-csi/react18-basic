@@ -3,6 +3,7 @@ import React from 'react';
 import useGetData from './useGetData';
 
 function PostsComponent() {
+	console.log('Posts');
 	const data = useGetData('https://jsonplaceholder.typicode.com/posts');
 
 	return (
