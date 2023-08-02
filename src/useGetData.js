@@ -6,6 +6,7 @@ const promiseWrapper = (promise) => {
 	let status = 'pending';
 	let result;
 
+	//promise의 상태에 따라 현재 상태값과 반환값을 각각  status, result에 담아줌
 	const s = promise.then(
 		(value) => {
 			status = 'success';
@@ -17,6 +18,7 @@ const promiseWrapper = (promise) => {
 		}
 	);
 
+	//status값에 따라 에러  혹은 fetching결과값을 반환하는 함수를 리턴
 	return () => {
 		switch (status) {
 			case 'pending':
@@ -36,18 +38,16 @@ function useGetData(url) {
 
 	useEffect(() => {
 		const getData = async () => {
-			const promise = await axios.get(url).then((response) => response.data);
-			console.log('promise', promise);
-			//console.log('promise', promise);
-			//console.log('promiseWrapper', promiseWrapper(promise));
-			//setResource(promiseWrapper(promise));
-			setResource(promise);
+			//데이터 요청후 현재 데이터 상태를 확인하는 promise객체 자체를 비동기적으로 받음
+			const promise = axios.get(url).then((response) => response.data);
+			//해당 promise객체를 promiseWrapper를 이용하여 직접 동기화하는 커스텀 함수 호출후 결과값을 리턴
+			setResource(promiseWrapper(promise));
 		};
 
 		getData();
 	}, [url]);
 
-	console.log('resource', resource);
+	//console.log('resource', resource);
 
 	return resource;
 }

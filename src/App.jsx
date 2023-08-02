@@ -4,6 +4,7 @@ import PostsComponent from './PostsComponent';
 function App() {
 	return (
 		<div className='App'>
+			{/* 내부에 직접 promise객체의 상태를 반환하는 컴포넌트를 Suspense로 감싸면 해당 컴포넌트만 독립적으로 동기화처리 */}
 			<Suspense fallback={<div>Loading Posts...</div>}>
 				<PostsComponent />
 			</Suspense>
